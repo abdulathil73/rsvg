@@ -72,6 +72,20 @@ Automated push steps (PowerShell)
 
 3. Log in to your GitHub account, verify the repo now has the code, then follow Render steps below to create a web service and a Postgres database. The `render.yaml` file allows Render to auto-detect the service and DB if you enable spec-based deploys.
 
+Automatic deploy via GitHub Actions
+---------------------------------
+
+I added a GitHub Actions workflow at `.github/workflows/deploy-to-render.yml` that runs on push to `main`. It installs dependencies and then triggers a deployment on Render via the Render API.
+
+To enable automatic deploys, add the following repository secrets in GitHub:
+
+- `RENDER_API_KEY` — create an API key in your Render account: Account → API Keys → New API Key. Use a service-level key and keep it secret.
+- `RENDER_SERVICE_ID` — your Render Web Service ID (found in the service URL or service settings; looks like `srv-xxxxxxxx`).
+
+Once those secrets are set, any push to `main` will run the workflow and call the Render API to create a new deploy for your service. The workflow also includes a helpful message when the secrets are missing.
+
+If you prefer Render's repo integration instead of API-triggered deploys, you can enable automatic deploys in the Render dashboard and skip adding the secrets.
+
 Materials included:
 - `server.js` Express server
 - `public/` frontend files (dark theme)
