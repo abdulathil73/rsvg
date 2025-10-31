@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Muscle Gain Coach</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px">
+        <div>
+          <h1>Muscle Gain Coach</h1>
+          <p class="subtitle">4-month progressive hypertrophy plan & diet — dark theme</p>
+        </div>
+        <nav>
+          <a href="full_plan.html" style="color:var(--accent);text-decoration:none;font-weight:600">View full workout & diet charts</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section id="calorie-calculator" class="card">
+        <h2>Calorie & Macro Calculator</h2>
+        <form id="calcForm">
+          <div class="row">
+            <label>Weight (kg) <input type="number" id="weight" value="60"></label>
+            <label>Height (cm) <input type="number" id="height" value="184"></label>
+            <label>Age <input type="number" id="age" value="25"></label>
+          </div>
+          <div class="row">
+            <label>Activity
+              <select id="activity">
+                <option value="1.2">Sedentary</option>
+                <option value="1.375">Light</option>
+                <option value="1.55" selected>Moderate (3-4x wk)</option>
+                <option value="1.725">Active</option>
+                <option value="1.9">Very active</option>
+              </select>
+            </label>
+            <label>Goal
+              <select id="goal">
+                <option value="maintain">Maintain</option>
+                <option value="mild_gain" selected>Mild gain (+300 kcal)</option>
+                <option value="aggressive_gain">Aggressive (+500 kcal)</option>
+              </select>
+            </label>
+          </div>
+          <button type="submit" class="btn">Calculate</button>
+        </form>
+        <div id="calcResult" class="result"></div>
+      </section>
+
+      <section id="workout-plan" class="card">
+        <h2>4-Month Workout Plan (Summary)</h2>
+        <div id="planPreview"></div>
+        <p class="note">Tip: Log your previous workout max weight and max reps using the form below — it will be saved and shown in the history table.</p>
+      </section>
+
+      <section id="log-form" class="card">
+        <h2>Log previous workout max</h2>
+        <form id="logForm">
+          <label>Date <input type="date" id="logDate" required></label>
+          <label>Exercise <input type="text" id="exercise" placeholder="e.g., Barbell Squat" required></label>
+          <label>Max weight (kg) <input type="number" id="maxWeight" required></label>
+          <label>Max reps <input type="number" id="maxReps" required></label>
+          <button type="submit" class="btn">Save log</button>
+        </form>
+        <div id="logResult"></div>
+        <h3>Recent logs</h3>
+        <table id="logsTable"><thead><tr><th>Date</th><th>Exercise</th><th>Max Weight (kg)</th><th>Max Reps</th></tr></thead><tbody></tbody></table>
+      </section>
+
+      <section id="diet-plan" class="card">
+        <h2>Diet Plan & Budget</h2>
+        <div id="dietPreview"></div>
+        <h3>Budget Table (weekly estimate)</h3>
+        <div id="budgetTable"></div>
+      </section>
+
+    </main>
+
+    <footer>
+      <small>Generated plan tailored to 60kg, 184cm male (age assumed 25). Adjust age in calculator if needed.</small>
+    </footer>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: muscle-gain-coach
+    env: node
+    plan: free
+    branch: main
+    buildCommand: "npm install"
+    startCommand: "npm start"
+    envVars:
+      - key: NODE_ENV
+        value: production
+databases:
+  - name: muscle-coach-db
+    engine: postgres
+    plan: starter

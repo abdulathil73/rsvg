@@ -1,0 +1,4 @@
+node_modules/
+db/coach.db
+.env
+logs/
